@@ -16,4 +16,8 @@ sales = SHEET.worksheet('sales')
 
 data = sales.get_all_values()
 
-print(data)
+#print(data)
+def get_sales_data:
+    print("Geben sie eine sechs Zahlen ein fÜr die Verkäufe ")
+    print("Sie sollen so aussehen 1,2,3,4,5,6")
+
