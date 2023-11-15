@@ -32,7 +32,11 @@ def get_sales_data():
 
 def data_validation(data):
     sales_data = data.split(",")
-    print(sales_data)
+    try:
+       if(len(data))!=6:
+          raise ValueError(f"Expected values 6 you introducen {len(data)}")
+
+    while true:
 
 get_sales_data()   
 
