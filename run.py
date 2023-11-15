@@ -22,10 +22,19 @@ data = sales.get_all_values()
 """
 def get_sales_data():
     print("Please enter sales from the last market ")
-    print("It should be six numbers with a comma in between 1,2,3,4,5,6\n)
+    print("It should be six numbers with a comma in between 1,2,3,4,5,6\n")
     data_str = input("Enter your data here")
-    print(data_str)
+    data_validation(data_str)
+
+"""
+  Validate the data
+"""
+
+def data_validation(data):
+    sales_data = data.split(",")
+    print(sales_data)
+
+get_sales_data()   
 
 
-get_sales_data()
 
