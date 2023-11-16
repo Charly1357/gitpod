@@ -13,7 +13,6 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('gitpod')
 
 
-#print(data)
 """
   Input from the user
 """
@@ -27,10 +26,12 @@ def get_sales_data():
 
     sales_data = (data_str.split(","))
 
+
     if data_validation(sales_data):
          print('Data is valid')
          break
-return sales_data    
+     
+  return sales_data    
 
 """
   Validate the data
@@ -47,8 +48,19 @@ def data_validation(data):
     
     return True
 
+def update_sales_worksheet(data):
+
+    """
+    Add new row to your sales data
+    """
+    print("Update sales worksheet\n")
+    sales_worksheet = SHEET.worksheet("sales")
+    sales_worksheet.append_row(data)
+    print("Salessheet updated succesfully\n")
+
 value = get_sales_data()
-print(value)
+sales = [int(values)for values in value]
+update_sales_worksheet(sales)
   
 
 
