@@ -75,18 +75,27 @@ def calculate_surplus(data):
     #surplus_sheet.append_row(surplus_data)
     #print("Surplussheet updated succesfully\n")
     
+def update_data(sheet,data):
+    sales = SHEET.worksheet(sheet)
+    sales.append_row(data)
+    print("Sheet updated")
 
-
-
-
+def get_last_5_entries_sales():
+    sales =SHEET.worksheet("sales")
+    columns = []
+    for ind in range(1,7):
+       column = sales.col_values(ind)
+       columns.append(column[-5:])
+    return columns
+                                
 
 
 def main():
    value = get_sales_data()
    sales = [int(values)for values in value]
-   update_sales_worksheet(sales)
+   update_data("sales",sales)
    surplus_data = calculate_surplus(sales)
-   print(surplus_data)
+   update_data("surplus",surplus_data)
 
 
 main() 
