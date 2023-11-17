@@ -87,7 +87,17 @@ def get_last_5_entries_sales():
        column = sales.col_values(ind)
        columns.append(column[-5:])
     return columns
-                                
+
+def calculating_stock_average(data):
+     new_stock_data = []
+     for column in data:
+         int_column = [int(num)for num in column]
+         average = sum(int_column)/len(int_column)
+         stock_num = average * 1.10
+         new_stock_data.append(round(stock_num))
+     return new_stock_data
+     
+                                     
 
 
 def main():
@@ -96,6 +106,8 @@ def main():
    update_data("sales",sales)
    surplus_data = calculate_surplus(sales)
    update_data("surplus",surplus_data)
+   entries = get_last_5_entries_sales()
+   calculating_sales_average(entries)
 
 
 main() 
