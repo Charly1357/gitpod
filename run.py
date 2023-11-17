@@ -107,7 +107,8 @@ def main():
    surplus_data = calculate_surplus(sales)
    update_data("surplus",surplus_data)
    entries = get_last_5_entries_sales()
-   calculating_sales_average(entries)
+   stock_data = calculating_sales_average(entries)
+   update_data("stock",stock_data)
 
 
 main() 
