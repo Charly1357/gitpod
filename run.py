@@ -70,9 +70,10 @@ def calculate_surplus(data):
     for sales ,date in zip(sala,data):
         surplus = sales - date 
         surplus_data.append(surplus)
-    surplus_sheet = SHEET.worksheet("surplus")
-    surplus_sheet.append_row(surplus_data)
-    print("Surplussheet updated succesfully\n")
+    return surplus_data
+    #surplus_sheet = SHEET.worksheet("surplus")
+    #surplus_sheet.append_row(surplus_data)
+    #print("Surplussheet updated succesfully\n")
     
 
 
@@ -84,7 +85,8 @@ def main():
    value = get_sales_data()
    sales = [int(values)for values in value]
    update_sales_worksheet(sales)
-   calculate_surplus(sales)
+   surplus_data = calculate_surplus(sales)
+   print(surplus_data)
 
 
 main() 
