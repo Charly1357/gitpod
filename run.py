@@ -1,5 +1,10 @@
+import re
 import gspread
 from google.oauth2.service_account import Credentials
+import json
+
+# In der Ereignisschleife auf Eingabe des Benutzers warten.
+
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -21,22 +26,18 @@ def get_sales_data():
   while True:
     print("Please enter sales from the last market ")
     print("It should be six numbers with a comma in between 1,2,3,4,5,6\n")
-
-    data_str = input("Enter your data here: ")
-
-    sales_data = (data_str.split(","))
-
-
-    if data_validation(sales_data):
-         print('Data is valid')
-         break
+    
+    user_name = input("Enter your data\n")
+    sales_data = list(user_name.split(","))
+    if(data_validation(sales_data)):
+        print('Name is valid')
+        break
      
   return sales_data    
 
 """
   Validate the data
 """
-
 def data_validation(data):
     try:
        [int(values)for values in data]
@@ -107,11 +108,20 @@ def main():
    surplus_data = calculate_surplus(sales)
    update_data("surplus",surplus_data)
    entries = get_last_5_entries_sales()
-   stock_data = calculating_sales_average(entries)
+   stock_data = calculating_stock_average(entries)
    update_data("stock",stock_data)
 
 
 main() 
+#get_sales_data()
+
+
+# Ein Fenster erstellen
+
+# Den Fenstertitle erstellen
+
+
+# In der Ereignisschleife auf Eingabe des Benutzers warten.
 
 
 
